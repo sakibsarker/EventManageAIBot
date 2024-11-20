@@ -1,0 +1,194 @@
+{% extends "auth/base.html" %} {%block content%}
+
+<body class="min-h-screen flex items-center justify-center p-4 bg-gray-50">
+  <div class="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-lg">
+    <div class="text-center">
+      <h1 class="text-3xl font-bold text-gray-900">
+        Register for Event Manager App
+      </h1>
+      <p class="text-gray-600 mt-2">Create your account to get started</p>
+    </div>
+
+    <form class="mt-8 space-y-6">
+      <div class="space-y-4">
+        <div class="space-y-2">
+          <label for="name" class="block text-sm font-medium text-gray-700"
+            >Name</label
+          >
+          <div class="relative">
+            <input
+              id="name"
+              name="name"
+              type="text"
+              required
+              class="pl-10 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Full name"
+            />
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <label for="email" class="block text-sm font-medium text-gray-700"
+            >Email</label
+          >
+          <div class="relative">
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              class="pl-10 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="example@email.com"
+            />
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <label for="phone" class="block text-sm font-medium text-gray-700"
+            >Phone</label
+          >
+          <div class="relative">
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              required
+              class="pl-10 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="+44 012345"
+            />
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <label for="password" class="block text-sm font-medium text-gray-700"
+            >Password</label
+          >
+          <div class="relative">
+            <input
+              id="password"
+              name="password"
+              type="password"
+              required
+              class="pl-10 pr-10 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Enter password"
+            />
+            <button
+              type="button"
+              class="absolute inset-y-0 right-0 px-3 flex items-center"
+            ></button>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <label for="company" class="block text-sm font-medium text-gray-700"
+            >Company</label
+          >
+          <div class="relative">
+            <input
+              id="company"
+              name="company"
+              type="text"
+              required
+              class="pl-10 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Company name"
+            />
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <label for="services" class="block text-sm font-medium text-gray-700"
+            >Products/Services</label
+          >
+          <textarea
+            id="services"
+            name="services"
+            rows="4"
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Description"
+          ></textarea>
+        </div>
+
+        <div class="space-y-2">
+          <label class="block text-base font-semibold text-gray-700"
+            >I am a:</label
+          >
+          <div class="flex space-x-4">
+            <div class="flex items-center">
+              <input
+                id="buyer"
+                name="role"
+                type="radio"
+                value="BUYER"
+                class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+                checked
+              />
+              <label
+                for="buyer"
+                class="ml-2 block text-sm font-medium text-gray-700"
+                >Buyer</label
+              >
+            </div>
+            <div class="flex items-center">
+              <input
+                id="seller"
+                name="role"
+                type="radio"
+                value="SELLER"
+                class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+              />
+              <label
+                for="seller"
+                class="ml-2 block text-sm font-medium text-gray-700"
+                >Seller</label
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+      >
+        Register
+      </button>
+    </form>
+
+    <div class="relative">
+      <div class="absolute inset-0 flex items-center">
+        <div class="w-full border-t border-gray-300"></div>
+      </div>
+      <div class="relative flex justify-center text-sm">
+        <span class="px-2 bg-white text-gray-500">Or continue with</span>
+      </div>
+    </div>
+
+    <div class="mt-6 grid grid-cols-3 gap-3">
+      <button
+        class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+      >
+        Google
+      </button>
+      <button
+        class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+      >
+        Outlook
+      </button>
+      <button
+        class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+      >
+        LinkedIn
+      </button>
+    </div>
+
+    <p class="text-center text-sm text-gray-600 mt-8">
+      Already registered?
+      <a href="/" class="font-medium text-blue-600 hover:text-blue-500"
+        >Sign in here</a
+      >
+    </p>
+  </div>
+</body>
+
+{%endblock%}
