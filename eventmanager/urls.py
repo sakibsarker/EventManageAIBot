@@ -17,11 +17,11 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path,include
-from account.views import SignUpView
+
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("",SignUpView.as_view(),name='Signup'),
+    # path("admin/", admin.site.urls),
+    path("",include("account.urls")),
     path("events/",include("events.urls")),
-    path("account/",include("account.urls"))
+
 ]
