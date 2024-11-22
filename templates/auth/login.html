@@ -88,7 +88,9 @@
 
     <p class="text-center text-sm text-gray-600 mt-8">
       Don't have account?
-      <a href="/signup" class="font-medium text-blue-600 hover:text-blue-500"
+      <a
+        href="{% url 'account:signup' %}"
+        class="font-medium text-blue-600 hover:text-blue-500"
         >Signup in here</a
       >
     </p>

@@ -13,10 +13,18 @@ class LoginView(View):
         password=request.POST.get('password')
 
         user=authenticate(request,email=email,password=password)
-
+        print(user)
         if user is not None:
             login(request,user)
-            return redirect("/events/")
+            print(user.role)
+            if user.role=='ADMIN':
+                return redirect("/admin/")
+            elif user.role=='SELLER':
+                return redirect("/seller/")
+            elif user.role=='BUYER':
+                return redirect("/buyer/")
+            else:
+                return redirect("/")
         else:
             return render(request,"auth/login.html",{"error":"Invalid email or password."})
 
@@ -49,7 +57,9 @@ class SignUpView(View):
         return redirect('/')  # Redirect to a success page or home
 
 class LogoutView(View):
-    def post(self,request):
+    def get(self, request):
+        return redirect('/')
+        
+    def post(self, request):
         logout(request)
         return redirect('/')
-    

@@ -69,7 +69,19 @@ class EventDeleteView(View):
         event=get_object_or_404(Event,id=event_id)
         event.delete()
         return redirect('events:events')
-
+    
+class AdminProfileView(View):
+    def get(self,request):
+        return render(request,"admin/profile.html")
+    
+class SellerDashboard(View):
+    def get(self,request):
+        return render(request,"seller/index.html")
+    
+class BuyerDashboard(View):
+    def get(self,request):
+        return render(request,"buyer/index.html")
+    
 class ChatBotView(TemplateView):
     template_name = 'chatbot/chat.html'
 
