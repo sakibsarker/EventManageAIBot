@@ -3,18 +3,18 @@
     <button
       class="w-full px-4 py-3 text-lg border-2 border-gray-200 rounded-md hover:bg-gray-50 transition-colors"
     >
-      View All Attendees
+      My Schedule
     </button>
     <button
       type="button"
-      onclick="location.href='{% url 'events:createevent' %}'"
+      onclick="location.href='{% url 'events:seller_allevents' %}'"
       class="w-full px-4 py-3 text-lg bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors"
     >
-      Create Events
+      All Events
     </button>
     <button
       type="button"
-      onclick="location.href='{% url 'events:admin_profile' %}'"
+      onclick="location.href='{% url 'events:seller_profile' %}'"
       class="w-full px-4 py-3 text-lg bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors"
     >
       Update Info

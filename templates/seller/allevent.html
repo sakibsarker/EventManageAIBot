@@ -1,0 +1,41 @@
+{% extends "seller/base.html" %} {% block content %}
+<div class="min-h-screen bg-gray-50 p-6">
+  <div class="max-w-7xl mx-auto bg-white rounded-md md:p-8 sm:p-8 shadow-sm">
+    <div class="relative flex items-center justify-center mb-6">
+      <a
+        href="{% url 'events:sellers' %}"
+        class="absolute left-0 text-gray-600 hover:text-gray-900"
+      >
+        Back to seller
+      </a>
+      <h1 class="text-2xl font-medium text-center">All events</h1>
+    </div>
+
+    <h1 class="text-2xl text-center">Here is a list of all events</h1>
+    <div class="max-w-7xl mx-auto bg-white rounded-[2rem] p-8 shadow-sm">
+      <div
+        class="grid grid-cols-1 text-start md:grid-cols-1 lg:grid-cols-3 gap-6 mb-8 mt-5 overflow-y-auto scrollbar-hide"
+      >
+        {% for event in events %}
+        <div
+          class="bg-white rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.1)] p-6"
+        >
+          <h2 class="text-xl text-start font-medium text-gray-900 mb-2">
+            {{ event.name }}
+          </h2>
+          <p class="text-gray-500 text-start mb-4">{{ event.event_time }}</p>
+          <div class="flex justify-end">
+            <a
+              href="{% url 'events:event_detail' event.id %}"
+              class="w-[150px] bg-[#2A2A2A] text-white py-3 rounded-lg hover:bg-black transition-colors text-center"
+            >
+              Manage Event
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% include "seller/allevents/bottomtab.html" %} {% endblock %}

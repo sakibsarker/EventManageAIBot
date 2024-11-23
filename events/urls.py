@@ -10,6 +10,9 @@ urlpatterns = [
     path("admin/chat/", views.ChatBotView.as_view(), name="chatbot"),
     path('admin/generate/',views.GenerateResponseView.as_view(), name='generate_response'),
     path("seller/", views.SellerDashboard.as_view(), name="sellers"),
+    path("seller/profile", views.SellerProfileView.as_view(), name="seller_profile"),
+    path("seller/allevents", views.SellerAllEvenView.as_view(), name="seller_allevents"),
+    path("seller/allevents/bottomtabl", views.EnrollmentView.as_view(), name="seller_allevents_bottomtab"),
     path("buyer/", views.BuyerDashboard.as_view(), name="buyers"),
  
 ]

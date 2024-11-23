@@ -7,7 +7,7 @@ class RoleBasedAccessMiddleware:
         # One-time configuration and initialization.
 
     def __call__(self, request):
-        print('called middleware')
+    
         # Check if the user is authenticated
         if request.user.is_authenticated:
             user_role = request.user.role

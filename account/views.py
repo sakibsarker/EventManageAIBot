@@ -13,10 +13,9 @@ class LoginView(View):
         password=request.POST.get('password')
 
         user=authenticate(request,email=email,password=password)
-        print(user)
+     
         if user is not None:
             login(request,user)
-            print(user.role)
             if user.role=='ADMIN':
                 return redirect("/admin/")
             elif user.role=='SELLER':

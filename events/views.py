@@ -1,12 +1,14 @@
 from django.shortcuts import get_object_or_404,render,redirect
 from django.http import HttpResponse
-from .models import Event
+from .models import Event,EventEnrollment
 from django.views import View
 import random
+from django.contrib.auth import authenticate
 from django.views.generic import TemplateView
 from django.http import JsonResponse
 from django.views.generic.edit import FormView
 from django.views import View
+from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
 import os
@@ -20,6 +22,52 @@ os.environ["FIREWORKS_API_KEY"] = os.getenv("FIREWORK_API_KEY")
 def generate_invite_code():
     return f"{random.randint(100000, 999999)}"
 
+class EnrollmentView(View):
+    @method_decorator(login_required)
+    def get(self,request):
+        return render(request,"seller/allevents/bottomtab.html")
+    @method_decorator(login_required)
+    def post(self,request):
+        user = request.user
+        print(f"User role: {user.role}")
+        invite_code=request.POST.get("invite_code")
+        print(f"INVIDE CODE:{invite_code}")
+
+        if user.role == 'SELLER':
+            # Query for event with matching seller invite code
+            existingEventSeller = Event.objects.filter(seller_invite_code=invite_code).first()
+            
+            if existingEventSeller:
+                # Create an EventEnrollment for the seller
+                enroll = EventEnrollment.objects.create(
+                    invite_code=invite_code,
+                    event_id=existingEventSeller,  
+                    user_id=user  
+                )
+                print(f"SELLER EVENTID: {existingEventSeller.id}")
+                return HttpResponse(f"Enrollment created successfully for seller  ")
+            else:
+                return HttpResponse(f"No event found for the given seller invite code.")
+        
+        elif user.role == 'BUYER':
+            # Query for event with matching buyer invite code
+            existingEventBuyer = Event.objects.filter(buyer_invite_code=invite_code).first()
+            
+            if existingEventBuyer:
+                # Create an EventEnrollment for the buyer
+                enroll = EventEnrollment.objects.create(
+                    invite_code=invite_code,
+                    event_id=existingEventBuyer, 
+                    user_id=user  
+                )
+                print(f"BUYER EVENTID: {existingEventBuyer.id}")
+                return HttpResponse(f"Enrollment created successfully for buyer ")
+            else:
+                return HttpResponse(f"No event found for the given buyer invite code.")
+        
+        else:
+            return HttpResponse(f"Invalid user role or event not found.")
+    
 class EventCreateView(View):
     def get(self,request):
         return render(request,"admin/createevent.html")
@@ -78,6 +126,14 @@ class AdminProfileView(View):
 class SellerDashboard(View):
     def get(self,request):
         return render(request,"seller/index.html")
+class SellerProfileView(View):
+    def get(self,request):
+        return render(request,"seller/profile.html")
+    
+class SellerAllEvenView(View):
+    def get(self,request):
+        events=Event.objects.all()
+        return render(request,"seller/allevent.html",{'events':events})
     
 class BuyerDashboard(View):
     def get(self,request):
