@@ -7,10 +7,11 @@ from django.views.generic import TemplateView
 from django.http import JsonResponse
 from django.views.generic.edit import FormView
 from django.views import View
+from django.contrib.auth.decorators import login_required
+
 import os
 from dotenv import load_dotenv
 from langchain_fireworks import ChatFireworks
-from langchain_core.messages import HumanMessage
 from langchain_core.prompts import ChatPromptTemplate
 
 load_dotenv()
