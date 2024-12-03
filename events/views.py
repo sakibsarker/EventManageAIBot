@@ -124,6 +124,7 @@ class AdminProfileView(View):
         return render(request,"admin/profile.html")
     
 class SellerDashboard(View):
+    
     def get(self,request):
         return render(request,"seller/index.html")
 class SellerProfileView(View):
@@ -131,8 +132,11 @@ class SellerProfileView(View):
         return render(request,"seller/profile.html")
     
 class SellerAllEvenView(View):
+    @method_decorator(login_required)
     def get(self,request):
-        events=Event.objects.all()
+        user = request.user
+        user_enrollments = EventEnrollment.objects.filter(user_id=user)
+        events = Event.objects.filter(id__in=user_enrollments.values_list('event_id', flat=True))
         return render(request,"seller/allevent.html",{'events':events})
     
 class BuyerDashboard(View):

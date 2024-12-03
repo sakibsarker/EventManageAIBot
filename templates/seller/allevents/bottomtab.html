@@ -8,10 +8,10 @@
       Enter event invite code
     </button>
     <dialog id="my_modal_3" class="modal">
-      <div class="modal-box relative">
+      <div class="modal-box relative bg-gray-100">
         <form method="dialog">
           <button
-            class="btn btn-sm btn-circle btn-ghost absolute right-4 top-4"
+            class="btn btn-sm text-black btn-circle btn-ghost absolute right-4 top-4"
             style="z-index: 10"
           >
             ✕
@@ -27,7 +27,7 @@
               type="text"
               id="invite_code "
               name="invite_code"
-              class="block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-200 focus:border-gray-200"
+              class="block bg-white text-black w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-200 focus:border-gray-200"
               placeholder="Enter invite code"
               required
             />
@@ -54,7 +54,9 @@
     <div class="justify-center item-center text-center">
       <form method="post" action="{% url 'account:logout' %}" class="inline">
         {% csrf_token %}
-        <button type="submit" class="text-lg font-medium">Logout</button>
+        <button type="submit" class="text-lg font-medium text-black">
+          Logout
+        </button>
       </form>
     </div>
   </div>

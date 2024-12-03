@@ -8,7 +8,7 @@
       >
         Back to Admin
       </a>
-      <h1 class="text-2xl font-medium text-center">Update event details</h1>
+      <h1 class="text-2xl font-medium text-center text-black">Update event details</h1>
     </div>
     <div class="p-8 max-w-2xl mx-auto">
       <form class="space-y-6" method="POST">
@@ -27,7 +27,7 @@
               id="name"
               name="name"
               value="{{event.name}}"
-              class="block w-full pl-3 pr-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-200 focus:border-gray-200"
+              class="block text-black bg-white  w-full pl-3 pr-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-200 focus:border-gray-200"
               placeholder="Event name"
               required
             />
@@ -46,7 +46,7 @@
               id="description"
               name="description"
               rows="4"
-              class="block w-full pl-3 pr-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-200 focus:border-gray-200"
+              class="block text-black bg-white  w-full pl-3 pr-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-200 focus:border-gray-200"
               placeholder="Event description"
               required
             >
@@ -58,7 +58,7 @@
           <div>
             <label
               for="event_time"
-              class="block text-sm font-medium text-gray-700 mb-1"
+              class="block  text-sm font-medium text-gray-700 mb-1"
             >
               Date and Time
             </label>
@@ -67,7 +67,7 @@
               id="event_time"
               name="event_time"
               value="{{ event.event_time|date:'Y-m-d\TH:i' }}"
-              class="block w-full pl-3 pr-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-200 focus:border-gray-200"
+              class="block text-black bg-gray-100  w-full pl-3 pr-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-200 focus:border-gray-200"
               placeholder="Select date and time"
               required
             />
